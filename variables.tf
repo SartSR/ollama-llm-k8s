@@ -36,3 +36,8 @@ variable "namespace" {
   type        = string
   default     = "ollama-openwebui"
 }
+
+variable "openwebui_api_token" {
+  description = "The API token for accessing OpenWebUI."
+  type        = string
+}
