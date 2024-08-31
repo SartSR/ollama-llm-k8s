@@ -1,0 +1,25 @@
+replicaCount: 1
+
+image:
+  repository: ollama/ollama-llm
+  tag: "v1.0.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+resources:
+  requests:
+    memory: "1Gi"
+    cpu: "500m"
+  limits:
+    memory: "2Gi"
+    cpu: "1"
+
+env:
+  - name: TELE_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: ollama-secrets
+        key: teleToken
