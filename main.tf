@@ -30,3 +30,13 @@ module "helm" {
   repository        = var.repository
   values            = var.values
 }
+
+module "openwebui" {
+  source             = "./helm"
+  cluster_name       = module.gke.cluster_name
+  namespace          = var.namespace
+  chart_name         = var.openwebui_chart_name
+  chart_version      = var.openwebui_chart_version
+  repository         = var.openwebui_repository
+  values             = var.openwebui_values
+}
