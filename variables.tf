@@ -17,7 +17,7 @@ variable "cluster_name" {
 variable "node_count" {
   description = "Number of nodes in the GKE cluster"
   type        = number
-  default     = 3
+  default     = 1
 }
 
 variable "machine_type" {
@@ -70,7 +70,7 @@ variable "openwebui_chart_version" {
 variable "openwebui_repository" {
   description = "Helm repository URL for OpenWebUI"
   type        = string
-  default     = "https://charts.openwebui.io"
+  default     = "https://helm.openwebui.com"
 }
 
 variable "openwebui_values" {
