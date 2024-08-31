@@ -6,6 +6,20 @@ resource "helm_release" "flux" {
 
   set {
     name  = "git.url"
-    value = "git@github.com:<your-repo>/your-config-repo.git"
+    value = "git@github.com:sartsr/flux-ollama.git"
+  }
+  set {
+    name  = "git.branch"
+    value = "main"
+  }
+
+  set {
+    name  = "git.secretName"
+    value = kubernetes_secret.flux_github_token.metadata[0].name
+  }
+
+  set {
+    name  = "sync.interval"
+    value = "1m"
   }
 }
