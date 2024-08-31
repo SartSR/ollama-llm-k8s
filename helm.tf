@@ -4,7 +4,7 @@ resource "helm_release" "ollama" {
   chart      = var.chart_name
   version    = var.chart_version
   namespace  = var.namespace
-  values     = [file("${path.module}/values.yaml")]
+  values     = [file("${path.module}/ollama-values.yaml")]
 }
 
 resource "helm_release" "openwebui" {
