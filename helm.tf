@@ -15,3 +15,23 @@ resource "helm_release" "openwebui" {
   namespace  = var.namespace
   values     = [file("${path.module}/openwebui-values.yaml")]
 }
+
+resource "kubernetes_service" "openwebui" {
+  metadata {
+    name      = "openwebui-service"
+    namespace = var.namespace
+  }
+
+  spec {
+    selector = {
+      "app.kubernetes.io/name" = "openwebui"
+    }
+
+    type = "LoadBalancer"  # This allows external access
+
+    port {
+      port        = 80
+      target_port = 8080
+    }
+  }
+}
